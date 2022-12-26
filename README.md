@@ -11,8 +11,7 @@ $ go mod init example/web-service-gin
 5. Run the code 
 $ go get .
 $ go run .
-
-
+6. To hit Get request : $ curl http://localhost:8080/albums
 In this project we will create a REST APIs using gin-gonic/gin package and will learn 
 
 1. How to route GET/POST/PUT/DELETE/PATCH/HEAD request 
