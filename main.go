@@ -165,16 +165,24 @@ func uploadfile(filename string, username string, folderId string) {
 	fmt.Printf("File '%s' successfully uploaded", file.Name)
 	fmt.Printf("\nFile Id: '%s' ", file.Id)
 }
-func getMymsg(c *gin.Context) {
-	c.IndentedJSON(http.StatusCreated, "Hi i am shivam")
+func getskills(c *gin.Context) {
+	var path string
+	path = "./icons"
+	entries, err := os.ReadDir(path)
+	handleerror(err)
+	var list []string
+	for _, entry := range entries {
+		list = append(list, entry.Name())
+	}
+	c.IndentedJSON(http.StatusCreated, list)
 
 }
 func main() {
 
 	router := gin.Default()
 	router.POST("/getMyicons", getMyicons)
-	router.GET("/message", getMymsg)
+	router.GET("/getskills", getskills)
 
-	router.Run("localhost:8080")
+	router.Run(":8080")
 
 }
